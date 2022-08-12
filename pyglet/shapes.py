@@ -422,9 +422,9 @@ class ShapeBase(ABC):
 class Arc(ShapeBase):
     def __init__(self, x, y, radius, segments=None, angle=math.tau, start_angle=0,
                  closed=False, color=(255, 255, 255, 255), batch=None, group=None):
-        """Create an Arc.
+        """Create an arc.
 
-        The Arc's anchor point (x, y) defaults to its center.
+        The arc's anchor point (x, y) defaults to its center.
 
         :Parameters:
             `x` : float
@@ -750,36 +750,36 @@ class Ellipse(ShapeBase):
 class Sector(ShapeBase):
     def __init__(self, x, y, radius, segments=None, angle=math.tau, start_angle=0,
                  color=(255, 255, 255, 255), batch=None, group=None):
-        """Create a Sector of a circle.
+        """Create a sector of a circle.
 
-                The sector's anchor point (x, y) defaults to the center of the circle.
+        The sector's anchor point (x, y) defaults to the center of the circle.
 
-                :Parameters:
-                    `x` : float
-                        X coordinate of the sector.
-                    `y` : float
-                        Y coordinate of the sector.
-                    `radius` : float
-                        The desired radius.
-                    `segments` : int
-                        You can optionally specify how many distinct triangles
-                        the sector should be made from. If not specified it will
-                        be automatically calculated using the formula:
-                        `max(14, int(radius / 1.25))`.
-                    `angle` : float
-                        The angle of the sector, in radians. Defaults to tau (pi * 2),
-                        which is a full circle.
-                    `start_angle` : float
-                        The start angle of the sector, in radians. Defaults to 0.
-                    `color` : (int, int, int, int)
-                        The RGB or RGBA color of the circle, specified as a
-                        tuple of 3 or 4 ints in the range of 0-255. RGB colors
-                        will be treated as having an opacity of 255.
-                    `batch` : `~pyglet.graphics.Batch`
-                        Optional batch to add the sector to.
-                    `group` : `~pyglet.graphics.Group`
-                        Optional parent group of the sector.
-                """
+        :Parameters:
+            `x` : float
+                X coordinate of the sector.
+            `y` : float
+                Y coordinate of the sector.
+            `radius` : float
+                The desired radius.
+            `segments` : int
+                You can optionally specify how many distinct triangles
+                the sector should be made from. If not specified it will
+                be automatically calculated using the formula:
+                `max(14, int(radius / 1.25))`.
+            `angle` : float
+                The angle of the sector, in radians. Defaults to tau (pi * 2),
+                which is a full circle.
+            `start_angle` : float
+                The start angle of the sector, in radians. Defaults to 0.
+            `color` : (int, int, int, int)
+                The RGB or RGBA color of the circle, specified as a
+                tuple of 3 or 4 ints in the range of 0-255. RGB colors
+                will be treated as having an opacity of 255.
+            `batch` : `~pyglet.graphics.Batch`
+                Optional batch to add the sector to.
+            `group` : `~pyglet.graphics.Group`
+                Optional parent group of the sector.
+        """
         self._x = x
         self._y = y
         self._radius = radius
