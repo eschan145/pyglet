@@ -5,11 +5,12 @@ Drawing Shapes
 
 
 The :py:mod:`~pyglet.shapes` module is an easy to use option for creating
-and manipulating colored shapes, such as rectangles, circles, and
-lines. Shapes can be resized, positioned, and rotated where applicable,
-and their color and opacity can be changed. All shapes are implemented
-using OpenGL primitives, so they can be drawn efficiently with :ref:`guide_batched-rendering`.
-In the following examples `Batch` will be ommitted for brevity, but in
+and manipulating colored shapes, such as rectangles, circles, and lines.
+Shapes can be resized, positioned, and rotated where applicable, and their
+color and opacity can be changed. All shapes are implemented using OpenGL
+primitives, so they can be drawn efficiently with
+:ref:`guide_batched-rendering`. In the following examples
+:py:class:`~pyglet.graphics.Batch` will be ommitted for brevity, but in
 general you always want to use Batched rendering for performance.
 
 For drawing more complex shapes, see the :ref:`guide_graphics` module.
@@ -32,6 +33,10 @@ The size of Shapes can also be adjusted after creation::
 
     square.width = 200
     circle.radius = 99
+
+Aside from circles and squares, other shapes include Arcs, BezierCurves,
+Ellipses, Lines, Rectangles, BorderedRectangles, Triangles, Stars, Polygons,
+and Sectors.
 
 
 Anchor Points
