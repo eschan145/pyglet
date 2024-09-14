@@ -30,7 +30,7 @@ class ShapesDemo(pyglet.window.Window):
         septagon_step = math.pi * 2 / 7
         self.fading_septagon = shapes.Polygon(
             *[[50 + 40 * math.sin(i * septagon_step), 200 + 40 * math.cos(i * septagon_step)] for i in range(7)],
-            batch=self.batch
+            batch=self.batch,
         )
 
         self.arc = shapes.Arc(50, 300, radius=40, segments=25, angle=4, color=(255, 255, 255), batch=self.batch)
@@ -43,6 +43,11 @@ class ShapesDemo(pyglet.window.Window):
 
         self.polygon = shapes.Polygon([400, 100], [500, 10], [600, 100], [550, 175], [450, 150], batch=self.batch)
 
+        self.box = shapes.Box(60, 40, 200, 100, thickness=2, color=(244, 55, 55), batch=self.batch)
+
+        coordinates = [[450, 400], [475, 450], [525, 450], [550, 400]]
+        self.multiLine = shapes.MultiLine(*coordinates, closed=True, batch=self.batch)
+
     def on_draw(self):
         """Clear the screen and draw shapes"""
         self.clear()
@@ -54,6 +59,7 @@ class ShapesDemo(pyglet.window.Window):
         self.square.rotation = self.time * 15
         self.rectangle.y = 200 + math.sin(self.time) * 190
         self.circle.radius = 75 + math.sin(self.time * 1.17) * 25
+        self.triangle.rotation = self.time * 15
 
         self.line.x = 360 + math.sin(self.time * 0.81) * 360
         self.line.x2 = 360 + math.sin(self.time * 1.34) * 360
@@ -67,6 +73,8 @@ class ShapesDemo(pyglet.window.Window):
 
         self.ellipse.b = abs(math.sin(self.time) * 100)
         self.sector.angle = self.time % math.tau
+
+        self.multiLine.rotation = self.time * -15
 
 
 if __name__ == "__main__":

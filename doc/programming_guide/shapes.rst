@@ -82,7 +82,7 @@ The following shapes have above features:
 - Sector
 - Line
 - Rectangle
-- BoderedRectangle
+- BorderedRectangle
 - Triangle
 - Polygon
 - Star

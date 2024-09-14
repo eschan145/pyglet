@@ -1,11 +1,11 @@
 # Note: The display mode API used here is Mac OS 10.6 only.
+from __future__ import annotations
 
-from ctypes import *
+from ctypes import c_uint32, c_void_p, byref
 
-from .base import Display, Screen, ScreenMode, Canvas
+from pyglet.libs.darwin.cocoapy import CGDirectDisplayID, cf, cfarray_to_list, cfstring_to_string, quartz
 
-from pyglet.libs.darwin.cocoapy import CGDirectDisplayID, quartz, cf
-from pyglet.libs.darwin.cocoapy import cfstring_to_string, cfarray_to_list
+from .base import Canvas, Display, Screen, ScreenMode
 
 
 class CocoaDisplay(Display):
@@ -78,6 +78,12 @@ class CocoaScreen(Screen):
         self.height = mode.height
 
     def restore_mode(self):
+        match_attrs = ['width', 'height', 'depth', 'rate']
+        current_mode = self.get_mode()
+        if all(getattr(current_mode, attr) == getattr(self._default_mode, attr) for
+               attr in match_attrs):
+            # Already in default mode
+            return
         quartz.CGDisplaySetDisplayMode(self._cg_display_id, self._default_mode.cgmode, None)
         quartz.CGDisplayRelease(self._cg_display_id)
 
@@ -122,6 +128,6 @@ class CocoaScreenMode(ScreenMode):
 class CocoaCanvas(Canvas):
 
     def __init__(self, display, screen, nsview):
-        super(CocoaCanvas, self).__init__(display)
+        super().__init__(display)
         self.screen = screen
         self.nsview = nsview
